@@ -1,20 +1,28 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors
 
-void main() {
-  runApp(const MainApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_clone/cores/firebase_options.dart';
+import 'package:youtube_clone/features/auth/pages/login_page.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(ProviderScope(child: MyApp())); // For RiverPod
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      // home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

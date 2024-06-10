@@ -1,3 +1,9 @@
-# youtube_clone
+# Youtube Clone Challenge
 
-A new Flutter project.
+Flutter + Firebase + RiverPod
+
+## Setup firebase
+
+`firebase login`
+
+`dart pub global activate flutterfire_cli`

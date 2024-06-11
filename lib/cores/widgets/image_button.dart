@@ -8,11 +8,11 @@ class ImageButton extends StatelessWidget {
   final String image;
   final bool haveColor;
   const ImageButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.image,
     required this.haveColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

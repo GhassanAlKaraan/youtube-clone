@@ -6,7 +6,7 @@ import 'package:youtube_clone/cores/widgets/flat_button.dart';
 import 'package:youtube_clone/features/content/Long_video/widgets/video_externel_buttons.dart';
 
 class Video extends StatelessWidget {
-  const Video({Key? key}) : super(key: key);
+  const Video({super.key});
 
   @override
   @override

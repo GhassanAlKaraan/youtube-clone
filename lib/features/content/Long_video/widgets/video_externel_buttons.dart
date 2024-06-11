@@ -7,10 +7,10 @@ class VideoExtraButton extends StatelessWidget {
   final String text;
   final IconData iconData;
   const VideoExtraButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.iconData,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,11 +6,11 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool haveColor;
   const CustomButton({
-    Key? key,
+    super.key,
     required this.iconData,
     required this.onTap,
     required this.haveColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

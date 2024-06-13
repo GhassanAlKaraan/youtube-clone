@@ -68,7 +68,5 @@ flutter {
     source '../..'
 }
 
-dependencies {
-    implementation 'org.codehaus.groovy:groovy:4.0.0'
-}
+dependencies {}
 

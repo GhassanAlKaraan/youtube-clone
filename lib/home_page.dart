@@ -1,6 +1,8 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/cores/methods.dart';
+import 'package:youtube_clone/cores/widgets/custom_button.dart';
 import 'package:youtube_clone/cores/widgets/image_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,6 +55,26 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
+            Expanded(
+                child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Home Page",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[600]),
+                  ),
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  CustomButton(
+                      iconData: Icons.logout, onTap: () {
+
+                        showErrorSnackBar("Not Implemented Yet", context);
+                      }, haveColor: true)
+                ],
+              ),
+            ))
           ],
         ),
       ),

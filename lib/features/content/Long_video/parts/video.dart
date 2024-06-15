@@ -105,7 +105,7 @@ class Video extends StatelessWidget {
                       child: FlatButton(
                         text: "Subscribe",
                         onPressed: () {},
-                        colour: Colors.black,
+                        color: Colors.black,
                       ),
                     ),
                   ),

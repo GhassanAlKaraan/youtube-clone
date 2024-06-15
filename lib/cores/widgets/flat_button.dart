@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 class FlatButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final Color colour;
+  final Color color;
   const FlatButton({
     super.key,
     required this.text,
     required this.onPressed,
-    required this.colour,
+    required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colour,
+        color: color,
         borderRadius: const BorderRadius.all(
           Radius.circular(16),
         ),

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youtube_clone/cores/firebase_options.dart';
 import 'package:youtube_clone/features/auth/pages/login_page.dart';
+import 'package:youtube_clone/features/auth/pages/username_page.dart';
 import 'package:youtube_clone/home_page.dart';
 
 void main() async {
@@ -26,7 +27,7 @@ class MyApp extends ConsumerWidget {
       home: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
-            return HomePage();
+            return UsernamePage();
           } else {
             return LoginPage();
           }

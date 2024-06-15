@@ -3,12 +3,11 @@ class UserModel {
   final String userName;
   final String email;
   final String profilePic;
-  final String subscriptions;
-  final String videos;
+  final List subscriptions;
+  final int videos;
   final String userId;
   final String description;
   final String type;
-
   UserModel({
     required this.displayName,
     required this.userName,
@@ -21,24 +20,8 @@ class UserModel {
     required this.type,
   });
 
-  // Factory constructor for creating a new UserModel instance from a map.
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      displayName: json['displayName'],
-      userName: json['userName'],
-      email: json['email'],
-      profilePic: json['profilePic'],
-      subscriptions: json['subscriptions'],
-      videos: json['videos'],
-      userId: json['userId'],
-      description: json['description'],
-      type: json['type'],
-    );
-  }
-
-  // Method for converting a UserModel instance into a map.
-  Map<String, dynamic> toJson() {
-    return {
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
       'displayName': displayName,
       'userName': userName,
       'email': email,
@@ -50,4 +33,19 @@ class UserModel {
       'type': type,
     };
   }
+
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      displayName: map['displayName'] as String,
+      userName: map['userName'] as String,
+      email: map['email'] as String,
+      profilePic: map['profilePic'] as String,
+      subscriptions: List.from(map['subscriptions'] as List),
+      videos: map['videos'] as int,
+      userId: map['userId'] as String,
+      description: map['description'] as String,
+      type: map['type'] as String,
+    );
+  }
+
 }

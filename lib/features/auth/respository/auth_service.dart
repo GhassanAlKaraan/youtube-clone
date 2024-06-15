@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 final authServiceProvider = Provider((ref) => AuthService(
       auth: FirebaseAuth.instance,
       googleSignIn: GoogleSignIn(),
-    )); // ref is some magic thing by RiverPod
+    ));
 
 class AuthService {
   FirebaseAuth auth;
@@ -22,5 +22,12 @@ class AuthService {
     );
 
     await auth.signInWithCredential(credential);
+  }
+
+    Future<void> signOut() async {
+    // Sign out from Firebase Auth
+    await auth.signOut();
+    // Sign out from Google Sign-In provider
+    await googleSignIn.signOut();
   }
 }

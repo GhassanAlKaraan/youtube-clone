@@ -1,15 +1,17 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youtube_clone/cores/methods.dart';
 import 'package:youtube_clone/cores/widgets/custom_button.dart';
 import 'package:youtube_clone/cores/widgets/image_button.dart';
+import 'package:youtube_clone/features/auth/respository/auth_service.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       body: SafeArea(
@@ -68,9 +70,11 @@ class HomePage extends StatelessWidget {
                     width: 6,
                   ),
                   CustomButton(
-                      iconData: Icons.logout, onTap: () {
+                      iconData: Icons.logout, onTap: 
+                      
+                      () async{
 
-                        showErrorSnackBar("Not Implemented Yet", context);
+                        await ref.read(authServiceProvider).signOut();
                       }, haveColor: true)
                 ],
               ),

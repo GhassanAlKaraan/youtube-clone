@@ -17,11 +17,11 @@ class UserDataService {
       required String userName,
       required String email,
       required String profilePic,
-      required List subscriptions,
-      required int videos,
-      required String userId,
+      List? subscriptions,
+      int? videos,
+      String? userId,
       required String description,
-      required String type}) async {
+      String? type}) async {
     UserModel user = UserModel(
         displayName: displayName,
         userName: userName,

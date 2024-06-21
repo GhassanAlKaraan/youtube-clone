@@ -1,9 +1,13 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_clone/cores/screens/error_page.dart';
+import 'package:youtube_clone/cores/screens/loader.dart';
 import 'package:youtube_clone/cores/widgets/custom_button.dart';
 import 'package:youtube_clone/cores/widgets/image_button.dart';
+import 'package:youtube_clone/features/auth/provider/user_provider.dart';
 import 'package:youtube_clone/features/auth/respository/auth_service.dart';
 
 class HomePage extends ConsumerWidget {
@@ -53,6 +57,21 @@ class HomePage extends ConsumerWidget {
                       haveColor: false,
                     ),
                   ),
+                ),
+                Consumer(
+                  builder: (context, ref, child) {
+                    return ref.watch(currentUserProvider).when(
+                        data: (currentUser) => Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: Colors.blueGrey,
+                                backgroundImage: CachedNetworkImageProvider(currentUser.profilePic),
+                              ),
+                            ),
+                        error: (error, stackTrace) => const ErrorPage(),
+                        loading: () => const Loader());
+                  },
                 ),
               ],
             ),

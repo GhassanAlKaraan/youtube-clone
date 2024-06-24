@@ -17,14 +17,12 @@ class AuthService {
     final googleUser = await googleSignIn.signIn();
     final googleAuth = await googleUser!.authentication;
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken
-    );
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
     await auth.signInWithCredential(credential);
   }
 
-    Future<void> signOut() async {
+  Future<void> signOut() async {
     // Sign out from Firebase Auth
     await auth.signOut();
     // Sign out from Google Sign-In provider

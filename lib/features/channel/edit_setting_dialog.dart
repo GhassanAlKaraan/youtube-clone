@@ -45,14 +45,17 @@ class _SettingsDialogState extends State<SettingsDialog> {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: const Text(
             "CANCEL",
             style: TextStyle(color: Colors.black),
           ),
         ),
         TextButton(
-          onPressed: () {},
+          // onPressed: () {},
+          onPressed: () {widget.onSave!(controller.text); Navigator.pop(context);},
           child: const Text(
             "SAVE",
             style: TextStyle(color: Colors.black),

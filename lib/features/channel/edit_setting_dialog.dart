@@ -19,9 +19,10 @@ class _SettingsDialogState extends State<SettingsDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
       titlePadding: const EdgeInsets.only(top: 0),
       title: Padding(
-        padding: const EdgeInsets.only(left: 22, top: 8),
+        padding: const EdgeInsets.only(left: 22, top: 16),
         child: Text(
           widget.identifier,
           style: const TextStyle(

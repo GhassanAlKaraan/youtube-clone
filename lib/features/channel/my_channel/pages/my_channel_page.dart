@@ -8,8 +8,8 @@ import 'package:youtube_clone/features/channel/my_channel/parts/tab_bar_view.dar
 import 'package:youtube_clone/features/channel/my_channel/parts/top_buttons.dart';
 import 'package:youtube_clone/features/channel/my_channel/parts/top_header.dart';
 
-class MyChannelScreen extends ConsumerWidget {
-  const MyChannelScreen({super.key});
+class MyChannelPage extends ConsumerWidget {
+  const MyChannelPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -63,7 +63,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                         showDialog(
                             context: context,
                             builder: (context) => SettingsDialog(
-                                  identifier: "Display Name",
+                                  identifier: "Your new Display Name",
                                   onSave: (name) {
                                     ref
                                         .watch(editSettingsProvider)
@@ -80,7 +80,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                         showDialog(
                             context: context,
                             builder: (context) => SettingsDialog(
-                                  identifier: "User Name",
+                                  identifier: "Your new User Name",
                                   onSave: (userName) {
                                     ref
                                         .watch(editSettingsProvider)
@@ -97,7 +97,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                         showDialog(
                             context: context,
                             builder: (context) => SettingsDialog(
-                                  identifier: "Description",
+                                  identifier: "Your new Description",
                                   onSave: (description) {
                                     ref
                                         .watch(editSettingsProvider)
@@ -106,7 +106,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                                 ));
                       },
                       value: currentUser.description.isEmpty
-                          ? "..."
+                          ? "No Description"
                           : currentUser.description,
                     ),
                     const SizedBox(height: 14),
@@ -131,7 +131,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                       child: Text(
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.grey[500]),
-                          "Changes made on your names and profile pictures are only visible to YouTube and not other Google services"),
+                          "Changes made on your name and profile picture are only visible to YouTube and not other Google services"),
                     ),
                   ],
                 ),

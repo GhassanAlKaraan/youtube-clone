@@ -6,6 +6,7 @@ import 'package:youtube_clone/cores/screens/loader.dart';
 import 'package:youtube_clone/features/auth/provider/user_provider.dart';
 import 'package:youtube_clone/features/channel/edit_setting_dialog.dart';
 import 'package:youtube_clone/features/channel/my_channel/repository/edit_field.dart';
+import 'package:youtube_clone/features/channel/my_channel/repository/upload_profile_pic.dart';
 import 'package:youtube_clone/features/channel/setting_field_item.dart';
 
 class MyChannelSettings extends ConsumerStatefulWidget {
@@ -48,10 +49,17 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                         Positioned(
                           top: 10,
                           right: 16,
-                          child: Image.asset(
-                            "assets/icons/camera.png",
-                            height: 30,
-                            color: Colors.white,
+                          child: GestureDetector(
+                            onTap:() async{
+                              //! NOT WORKING
+                              await ref.watch(uploadProfilePicProvider).pickAndUploadImage();
+                            
+                            },
+                            child: Image.asset(
+                              "assets/icons/camera.png",
+                              height: 30,
+                              color: Colors.white,
+                            ),
                           ),
                         )
                       ],

@@ -9,6 +9,7 @@ import 'package:youtube_clone/cores/widgets/custom_button.dart';
 import 'package:youtube_clone/cores/widgets/image_button.dart';
 import 'package:youtube_clone/features/auth/provider/user_provider.dart';
 import 'package:youtube_clone/features/auth/respository/auth_service.dart';
+import 'package:youtube_clone/features/content/bottom_navigation.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -62,11 +63,13 @@ class HomePage extends ConsumerWidget {
                   builder: (context, ref, child) {
                     return ref.watch(currentUserProvider).when(
                         data: (currentUser) => Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
                               child: CircleAvatar(
                                 radius: 15,
                                 backgroundColor: Colors.blueGrey,
-                                backgroundImage: CachedNetworkImageProvider(currentUser.profilePic),
+                                backgroundImage: CachedNetworkImageProvider(
+                                    currentUser.profilePic),
                               ),
                             ),
                         error: (error, stackTrace) => const ErrorPage(),
@@ -88,18 +91,18 @@ class HomePage extends ConsumerWidget {
                     width: 6,
                   ),
                   CustomButton(
-                      iconData: Icons.logout, onTap: 
-                      
-                      () async{
-
+                      iconData: Icons.logout,
+                      onTap: () async {
                         await ref.read(authServiceProvider).signOut();
-                      }, haveColor: true)
+                      },
+                      haveColor: true)
                 ],
               ),
             ))
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }

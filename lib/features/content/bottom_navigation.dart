@@ -8,14 +8,14 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 5, bottom: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 8,  vertical: 20),
       child: GNav(
         rippleColor: Colors.grey[100]!,
         hoverColor: Colors.grey[100]!,
         haptic: true, // haptic feedback
         tabBorderRadius: 15,
         tabActiveBorder: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 1,
         ), // tab button border
         tabBorder: Border.all(
@@ -32,7 +32,7 @@ class BottomNavigation extends StatelessWidget {
         duration: const Duration(milliseconds: 419),
         gap: 8,
         color: Colors.grey[800],
-        activeColor: Colors.purple,
+        activeColor: Colors.blue,
         iconSize: 24,
         tabBackgroundColor: Colors.purple.withOpacity(
           0.1,

@@ -10,6 +10,7 @@ import 'package:youtube_clone/cores/screens/loader.dart';
 import 'package:youtube_clone/features/auth/pages/login_page.dart';
 import 'package:youtube_clone/features/auth/pages/username_page.dart';
 import 'package:youtube_clone/features/channel/my_channel/pages/my_channel_settings.dart';
+import 'package:youtube_clone/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +22,6 @@ void main() async {
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-
-  Future<void> uploadImage() async{
-    
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -67,7 +64,7 @@ class MyApp extends ConsumerWidget {
                       ConnectionState.waiting) {
                     return Loader();
                   }
-                  return MyChannelSettings();
+                  return HomePage();
                 });
           })),
     );

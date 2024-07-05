@@ -9,7 +9,6 @@ import 'package:youtube_clone/cores/firebase_options.dart';
 import 'package:youtube_clone/cores/screens/loader.dart';
 import 'package:youtube_clone/features/auth/pages/login_page.dart';
 import 'package:youtube_clone/features/auth/pages/username_page.dart';
-import 'package:youtube_clone/features/channel/my_channel/pages/my_channel_settings.dart';
 import 'package:youtube_clone/home_page.dart';
 
 void main() async {

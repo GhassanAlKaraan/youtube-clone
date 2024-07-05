@@ -19,7 +19,7 @@ class BottomNavigation extends StatelessWidget {
           width: 1,
         ), // tab button border
         tabBorder: Border.all(
-          color: Colors.grey,
+          color: Colors.white,
           width: 1,
         ), // tab button border
         tabShadow: [
@@ -32,11 +32,9 @@ class BottomNavigation extends StatelessWidget {
         duration: const Duration(milliseconds: 419),
         gap: 8,
         color: Colors.grey[800],
-        activeColor: Colors.blue,
+        activeColor: Colors.white,
         iconSize: 24,
-        tabBackgroundColor: Colors.purple.withOpacity(
-          0.1,
-        ),
+        tabBackgroundColor: Colors.red,
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 5,

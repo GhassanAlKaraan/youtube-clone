@@ -12,10 +12,10 @@ class MyTrimSlider extends StatefulWidget {
   final double height;
 
   const MyTrimSlider({
-    super.key,
+    Key? key,
     required this.controller,
     required this.height,
-  });
+  }) : super(key: key);
 
   @override
   State<MyTrimSlider> createState() => _MyTrimSliderState();

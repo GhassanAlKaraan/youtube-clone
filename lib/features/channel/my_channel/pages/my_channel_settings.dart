@@ -51,9 +51,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                           right: 16,
                           child: GestureDetector(
                             onTap:() async{
-                              //! NOT WORKING
                               await ref.watch(uploadProfilePicProvider).pickAndUploadImage();
-                            
                             },
                             child: Image.asset(
                               "assets/icons/camera.png",
@@ -128,7 +126,7 @@ class _MyChannelSettingsState extends ConsumerState<MyChannelSettings> {
                               value: _isSwitched,
                               onChanged: (value) {
                                 setState(() {
-                                  _isSwitched = !_isSwitched;
+                                  _isSwitched = !_isSwitched; //? Not used yet.
                                 });
                               })
                         ],

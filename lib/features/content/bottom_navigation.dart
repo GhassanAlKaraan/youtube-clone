@@ -2,24 +2,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
+class BottomNavigation extends StatefulWidget {
+  final Function(int index) onPressed;
+  const BottomNavigation({
+    Key? key,
+    required this.onPressed,
+  }) : super(key: key);
 
+  @override
+  State<BottomNavigation> createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<BottomNavigation> {
+  int currnetIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8,  vertical: 20),
+      padding: const EdgeInsets.only(top: 5, bottom: 3),
       child: GNav(
         rippleColor: Colors.grey[100]!,
         hoverColor: Colors.grey[100]!,
         haptic: true, // haptic feedback
         tabBorderRadius: 15,
         tabActiveBorder: Border.all(
-          color: Colors.white,
+          color: Colors.black,
           width: 1,
         ), // tab button border
         tabBorder: Border.all(
-          color: Colors.white,
+          color: Colors.grey,
           width: 1,
         ), // tab button border
         tabShadow: [
@@ -32,11 +42,13 @@ class BottomNavigation extends StatelessWidget {
         duration: const Duration(milliseconds: 419),
         gap: 8,
         color: Colors.grey[800],
-        activeColor: Colors.white,
+        activeColor: Colors.purple,
         iconSize: 24,
-        tabBackgroundColor: Colors.red,
+        tabBackgroundColor: Colors.purple.withOpacity(
+          0.1,
+        ),
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
+          horizontal: 19.5,
           vertical: 5,
         ),
         tabs: const [
@@ -46,6 +58,8 @@ class BottomNavigation extends StatelessWidget {
           GButton(icon: Icons.search, text: "Search"),
           GButton(icon: Icons.heart_broken, text: "Log out"),
         ],
+        onTabChange: widget.onPressed,
+        selectedIndex: currnetIndex,
       ),
     );
   }

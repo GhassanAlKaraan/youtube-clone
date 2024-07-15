@@ -5,17 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youtube_clone/cores/screens/error_page.dart';
 import 'package:youtube_clone/cores/screens/loader.dart';
-import 'package:youtube_clone/cores/widgets/custom_button.dart';
 import 'package:youtube_clone/cores/widgets/image_button.dart';
+import 'package:youtube_clone/features/account/account_page.dart';
 import 'package:youtube_clone/features/auth/provider/user_provider.dart';
-import 'package:youtube_clone/features/auth/respository/auth_service.dart';
 import 'package:youtube_clone/features/content/bottom_navigation.dart';
+import 'package:youtube_clone/features/upload/upload_bottom_sheet.dart';
+import 'package:youtube_clone/pages_list.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       body: SafeArea(
@@ -62,47 +69,54 @@ class HomePage extends ConsumerWidget {
                 Consumer(
                   builder: (context, ref, child) {
                     return ref.watch(currentUserProvider).when(
-                        data: (currentUser) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                          data: (currentUser) => Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AccountPage(
+                                      user: currentUser,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: CircleAvatar(
-                                radius: 15,
-                                backgroundColor: Colors.blueGrey,
+                                radius: 14,
+                                backgroundColor: Colors.grey,
                                 backgroundImage: CachedNetworkImageProvider(
-                                    currentUser.profilePic),
+                                  currentUser.profilePic,
+                                ),
                               ),
                             ),
-                        error: (error, stackTrace) => const ErrorPage(),
-                        loading: () => const Loader());
+                          ),
+                          error: (error, stackTrace) => const ErrorPage(),
+                          loading: () => const Loader(),
+                        );
                   },
                 ),
               ],
             ),
             Expanded(
-                child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Home Page",
-                    style: TextStyle(fontSize: 20, color: Colors.grey[600]),
-                  ),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  CustomButton(
-                      iconData: Icons.logout,
-                      onTap: () async {
-                        await ref.read(authServiceProvider).signOut();
-                      },
-                      haveColor: true)
-                ],
-              ),
-            ))
+              child: pages[currentIndex],
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(
+        onPressed: (index) {
+          if (index != 2) {
+            currentIndex = index;
+            setState(() {});
+          } else {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => const CreateBottomSheet(),
+            );
+          }
+        },
+      ),
     );
   }
 }
